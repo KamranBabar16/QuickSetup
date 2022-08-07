@@ -18,7 +18,7 @@ chmod +x QuickSetup.sh
 //add your username and a new password for MySQL root user
 nano QuickSetup.sh
 
-./autosetup.sh OR 
+./QuickSetup.sh OR 
 bash QuickSetup.sh
 ```
 
