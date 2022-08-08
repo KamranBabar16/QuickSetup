@@ -15,9 +15,9 @@ cd QuickSetup
 
 chmod +x QuickSetup.sh
 
-bash QuickSetup.sh
+sudo bash QuickSetup.sh
 OR
-./QuickSetup.sh
+sudo ./QuickSetup.sh
 ```
 
 ## List
