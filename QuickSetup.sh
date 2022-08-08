@@ -245,6 +245,7 @@ eof
         echo ""
         echo ""
         echo -n -e "${Red} Type new password for MySQL phpmyadmin user and press enter: "
+        i=1
         read mysqlrootpassword
         sudo mysql -u root <<eof
 		flush privileges;
@@ -256,14 +257,15 @@ eof
         echo ""
 
         sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl -y
+        sudo service apache2 stop
         sudo mkdir -p /var/lib/phpmyadmin/tmp
+        sudo rm /etc/phpmyadmin/config.inc.php
         REALUSER="${SUDO_USER:-${USER}}"
         sudo chown -R ${REALUSER}:${REALUSER} /var/lib/phpmyadmin
         sudo chown -R ${REALUSER}:${REALUSER} /etc/phpmyadmin
         sudo chown -R ${REALUSER}:${REALUSER} /usr/share/phpmyadmin
         sudo cp /home/${REALUSER}/quicksetup/config.inc.php /etc/phpmyadmin/
-        echo -e "${Red}Log in to phpMyAdmin by using the following credentials:"
-        echo -e "Username: root. Password: NoPassword."
+        sudo service apache2 start
         echo -e "${c}PHPMyAdmin setup Successfully."
         ;;
 
