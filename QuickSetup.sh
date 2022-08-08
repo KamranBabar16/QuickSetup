@@ -178,15 +178,32 @@ for choices in $selected; do
         ;;
 
     3)
-
         echo -e "${Cyan} -------------------------------------------------- "
         echo -e "${Cyan} -- Installing MySQL"
         echo -e "${Cyan} -------------------------------------------------- "
         echo ""
         sudo apt update
         sudo apt install mysql-server -y
-        sudo mysql_secure_installation
+
+        echo ""
+         # read -s "Note: password will be hidden when typing"
+        echo -n -e "${Red} Type password for MySQL root user and press enter: "
+        read  mysqlrootpassword
+
+        sudo mysql <<eof
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${mysqlrootpassword}';
+  FLUSH PRIVILEGES
+eof
+        sudo mysql_secure_installation <<eof
+  ${mysqlrootpassword}
+  N
+  N
+  N
+  Y
+  Y
+eof
         sudo ufw allow 3306
+        sudo systemctl restart mysql
         echo -e "${c}Installing & Setting up Successfully."
         ;;
 
@@ -198,7 +215,22 @@ for choices in $selected; do
 
         sudo apt update
         sudo apt-get install mariadb-server -y
-        sudo mysql_secure_installation
+        
+        echo ""
+         # read -s "Note: password will be hidden when typing"
+        echo -n -e "${Red} Type password for MySQL root user and press enter: "
+        read  mysqlrootpassword
+
+        sudo mysql_secure_installation <<eof
+  
+  Y
+  ${mysqlrootpassword}
+  ${mysqlrootpassword}
+  N
+  N
+  Y
+  Y
+eof
         sudo ufw allow 3306
         sudo systemctl daemon-reload
         sudo systemctl restart mariadb
