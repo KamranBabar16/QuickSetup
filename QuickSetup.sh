@@ -244,9 +244,7 @@ eof
 
         echo ""
         echo ""
-        # read -s "Note: password will be hidden when typing"
-        echo -n -e "${Red} Type password for MySQL root user and press enter: "
-        i=1
+        echo -n -e "${Red} Type new password for MySQL phpmyadmin user and press enter: "
         read mysqlrootpassword
         sudo mysql -u root <<eof
 		flush privileges;
