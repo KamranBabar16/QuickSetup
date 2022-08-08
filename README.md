@@ -10,13 +10,14 @@ The script will automatically add the software sources and install the chosen ap
 
 ```bash
 git clone https://github.com/KamranBabar16/QuickSetup.git
+
 cd QuickSetup
+
 chmod +x QuickSetup.sh
 
-nano QuickSetup.sh
-
-./QuickSetup.sh OR 
 bash QuickSetup.sh
+OR
+./QuickSetup.sh
 ```
 
 ## List
