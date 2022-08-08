@@ -5,6 +5,7 @@
 
 <?php
 /**
+ * PHPMyAdmin Version 5.2.0 Config
  * Debian local configuration file
  *
  * This file overrides the settings made by phpMyAdmin interactive setup
