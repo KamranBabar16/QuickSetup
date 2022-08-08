@@ -13,7 +13,6 @@ git clone https://github.com/KamranBabar16/QuickSetup.git
 cd QuickSetup
 chmod +x QuickSetup.sh
 
-#do not run on root user
 nano QuickSetup.sh
 
 ./QuickSetup.sh OR 
