@@ -243,7 +243,7 @@ eof
 
         echo ""
         echo ""
-        echo -n -e "${Red} Type your current MySQL root password and press enter: "
+        echo -n -e "${Red} Type your new MySQL phpmyadmin user password and press enter: "
         i=1
         read mysqlrootpassword
         sudo mysql -u root <<eof
