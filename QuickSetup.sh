@@ -217,12 +217,12 @@ eof
         sudo apt-get install mariadb-server -y
         
         echo ""
-         # read -s "Note: password will be hidden when typing"
         echo -n -e "${Red} Type password for MySQL root user and press enter: "
         read  mysqlrootpassword
 
         sudo mysql_secure_installation <<eof
   
+  Y
   Y
   ${mysqlrootpassword}
   ${mysqlrootpassword}
@@ -232,7 +232,6 @@ eof
   Y
 eof
         sudo ufw allow 3306
-        sudo systemctl daemon-reload
         sudo systemctl restart mariadb
         echo -e "${c}Installing & Setting up Successfully."
         ;;
@@ -244,15 +243,13 @@ eof
 
         echo ""
         echo ""
-        echo -n -e "${Red} Type new password for MySQL phpmyadmin user and press enter: "
+        echo -n -e "${Red} Type your current MySQL root password and press enter: "
         i=1
         read mysqlrootpassword
         sudo mysql -u root <<eof
-		flush privileges;
   CREATE USER 'phpmyadmin'@'localhost' IDENTIFIED BY '${mysqlrootpassword}';
   GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost' WITH GRANT OPTION;
   FLUSH PRIVILEGES;
-  quit;
 eof
         echo ""
 
@@ -264,7 +261,7 @@ eof
         sudo chown -R ${REALUSER}:${REALUSER} /var/lib/phpmyadmin
         sudo chown -R ${REALUSER}:${REALUSER} /etc/phpmyadmin
         sudo chown -R ${REALUSER}:${REALUSER} /usr/share/phpmyadmin
-        sudo cp /home/${REALUSER}/quicksetup/config.inc.php /etc/phpmyadmin/
+        sudo cp /home/${REALUSER}/QuickSetup/config.inc.php /etc/phpmyadmin/
         sudo service apache2 start
         echo -e "${c}PHPMyAdmin setup Successfully."
         ;;
