@@ -2,10 +2,8 @@
 
 Auto setup is a simple bash script with the command «bash QuickSetup.sh«
 The script will automatically add the software sources and install the chosen application.
-Firstly change the user and password (for MySQL Root User) into «nano QuickSetup.sh«.
 
 > Keep in mind that this script not fully interactive. We will have to enter the password when necessary.
-> For example, suppose we want configure a PHPMyAdmin. To do this, we will write password manually.
 
 
 ## Usage
