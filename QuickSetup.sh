@@ -257,11 +257,10 @@ eof
         sudo service apache2 stop
         sudo mkdir -p /var/lib/phpmyadmin/tmp
         sudo rm /etc/phpmyadmin/config.inc.php
-        REALUSER="${SUDO_USER:-${USER}}"
-        sudo chown -R ${REALUSER}:${REALUSER} /var/lib/phpmyadmin
-        sudo chown -R ${REALUSER}:${REALUSER} /etc/phpmyadmin
-        sudo chown -R ${REALUSER}:${REALUSER} /usr/share/phpmyadmin
-        sudo cp /home/${REALUSER}/QuickSetup/config.inc.php /etc/phpmyadmin/
+        sudo chown -R $USER:$USER /var/lib/phpmyadmin
+        sudo chown -R $USER:$USER /etc/phpmyadmin
+        sudo chown -R $USER:$USER /usr/share/phpmyadmin
+        sudo cp /home/$USER/QuickSetup/config.inc.php /etc/phpmyadmin/
         sudo service apache2 start
         echo -e "${c}PHPMyAdmin setup Successfully."
         ;;
@@ -275,8 +274,7 @@ eof
         sudo apt-get install proftpd -y
         sudo /etc/init.d/proftpd stop
         sudo rm /etc/proftpd/proftpd.conf
-        REALUSER="${SUDO_USER:-${USER}}"
-        sudo cp /home/${REALUSER}/quicksetup/proftpd.conf /etc/proftpd/proftpd.conf
+        sudo cp /home/$USER/quicksetup/proftpd.conf /etc/proftpd/proftpd.conf
         sudo /etc/init.d/proftpd restart
         echo -e "${c}ProFTPD Installed Successfully."
         ;;
